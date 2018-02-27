@@ -1,0 +1,15 @@
+/web/bundles/
+/web/app_dev.php
+/web/app_test.php
+/app/bootstrap.php.cache
+/app/cache/*
+/app/config/parameters.yml
+/app/config/parameters_test.yml
+/app/logs/*
+!app/cache/.gitkeep
+!app/logs/.gitkeep
+/app/build/*
+/vendor/
+/bin/
+/.idea
+composer.lock

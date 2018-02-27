@@ -1,0 +1,30 @@
+# Préférences utilisateurs
+parameters:
+    user_preferences:
+        defaults:
+            dashboard: ["W01", "W04"]
+            plandeclassement:
+              - "ifpIdAuteurDocument"
+              - "ifpIdLibelleDocument"
+              - "ifpIdPeriodePaie"
+              - "ifpIdPeriodeExerciceSociale"
+              - "ifpIdDateArchivageDocument"
+              - "ifpIdNomClient"
+              - "ifpIdNomSalarie"
+              - "ifpIdPrenomSalarie"
+            mesdossiers:
+              - "ifpNom"
+              - "ifpPrenom"
+            completudesAvec:
+              - "ifpNom"
+              - "ifpPrenom"
+            completudesSans:
+              - "ifpNom"
+              - "ifpPrenom"
+            thematiques:
+              - "ifpNom"
+              - "ifpPrenom"
+            docavance:
+              - "ifpNom"
+              - "ifpPrenom"
+

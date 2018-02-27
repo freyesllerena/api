@@ -1,0 +1,74 @@
+parameters:
+    authorizations:
+        profiles_rights:
+            chef de file:
+                rightAnnotationDoc: 0
+                rightAnnotationDossier: 0
+                rightClasser: 0
+                rightCycleDeVie: 0
+                rightRechercheDoc: 0
+                rightRecycler: 0
+                rightUtilisateurs: 3
+                accessExportCel: false
+                accessImportUnitaire: false
+                accessImportHabilitation: false
+            expert:
+                rightAnnotationDoc: 7
+                rightAnnotationDossier: 7
+                rightClasser: 7
+                rightCycleDeVie: 3
+                rightRechercheDoc: 7
+                rightRecycler: 7
+                rightUtilisateurs: 0
+                accessExportCel: true
+                accessImportUnitaire: true
+                accessImportHabilitation: false
+            expertia:
+                rightAnnotationDoc: 7
+                rightAnnotationDossier: 7
+                rightClasser: 0
+                rightCycleDeVie: 0
+                rightRechercheDoc: 7
+                rightRecycler: 0
+                rightUtilisateurs: 3
+                accessExportCel: false
+                accessImportUnitaire: false
+                accessImportHabilitation: true
+            expertms:
+                rightAnnotationDoc: 7
+                rightAnnotationDossier: 7
+                rightClasser: 7
+                rightCycleDeVie: 3
+                rightRechercheDoc: 7
+                rightRecycler: 7
+                rightUtilisateurs: 3
+                accessExportCel: true
+                accessImportUnitaire: true
+                accessImportHabilitation: true
+            expertmeo:
+                rightAnnotationDoc: 7
+                rightAnnotationDossier: 7
+                rightClasser: 7
+                rightCycleDeVie: 3
+                rightRechercheDoc: 7
+                rightRecycler: 7
+                rightUtilisateurs: 3
+                accessExportCel: true
+                accessImportUnitaire: true
+                accessImportHabilitation: true
+
+    file_import:
+        structure:
+            - usrLogin
+            - usrNom
+            - usrPrenom
+            - filtrePopulation
+            - filtreApplicatif
+            - rightRechercheDoc
+            - rightClasser
+            - rightCycleDeVie
+            - rightUtilisateurs
+            - rightAnnotationDoc
+            - rightAnnotationDossier
+            - accessExportCel
+            - accessImportUnitaire

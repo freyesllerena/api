@@ -1,0 +1,899 @@
+parameters:
+    # Les propriétés type, length et nullable des metadonnées sont chargées depuis l'entité
+    metadata_documents:
+        Id:
+            hidden: false
+            editable: false
+            category: "t"
+            source: [ifp]
+
+        Documentsassocies:
+            hidden: true,
+            editable: false,
+            category: "t"
+            source: [ifp]
+
+        VdmLocalisation:
+            hidden: true
+            editable: false
+            category: "t"
+            source: [ifp]
+
+        Refpapier:
+            hidden: true
+            editable: false
+            category: "t"
+            source: [ifp]
+
+        Nombrepages:
+            hidden: false
+            editable: false
+            category: "m"
+            source: [ifp]
+
+        IdCodeChrono:
+            hidden: false
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+
+        IdNumeroBoiteArchive:
+            hidden: false
+            editable: true
+            category: "m"
+            source: [ifp]
+
+        Interbox:
+            hidden: true
+            editable: false
+            category: "t"
+            source: [ifp]
+
+        LotIndex:
+            hidden: true
+            editable: false
+            category: "t"
+            source: [ifp]
+
+        LotProduction:
+            hidden: true
+            editable: false
+            category: "t"
+            source: [ifp]
+
+        IdNomSociete:
+            hidden: false
+            editable: false
+            category: "m"
+            source: [ifp, iin]
+
+        IdCompany:
+            hidden: true
+            editable: false
+            category: "m"
+            source: [ifp]
+
+        IdNomClient:
+            hidden: false
+            editable: false
+            category: "m"
+            source: [ifp, iin]
+
+        CodeClient:
+            hidden: false
+            editable: false
+            category: "m"
+            source: [ifp, iin]
+
+        IdCodeSociete:
+            hidden: false
+            editable: false
+            category: "m"
+            source: [ifp, iin]
+
+        IdCodeEtablissement:
+            hidden: false
+            editable: false
+            category: "m"
+            source: [ifp, iin]
+
+        IdLibEtablissement:
+            hidden: false
+            editable: false
+            category: "m"
+            source: [ifp, iin]
+
+        IdCodeJalon:
+            hidden: false
+            editable: false
+            category: "m"
+            source: [ifp, iin]
+
+        IdLibelleJalon:
+            hidden: false
+            editable: false
+            category: "m"
+            source: [ifp]
+
+        IdNumSiren:
+            hidden: false
+            editable: false
+            category: "m"
+            source: [ifp, iin]
+
+        IdNumSiret:
+            hidden: false
+            editable: false
+            category: "m"
+            source: [ifp, iin]
+
+        IdIndiceClassement:
+            hidden: false
+            editable: false
+            category: "m"
+            source: [ifp]
+
+        IdUniqueDocument:
+            hidden: false
+            editable: false
+            category: "m"
+            source: [ifp]
+
+        IdTypeDocument:
+            hidden: false
+            editable: false
+            category: "m"
+            source: [ifp]
+
+        IdLibelleDocument:
+            hidden: false
+            editable: true
+            category: "m"
+            source: [ifp]
+
+        CodeDocument:
+            hidden: false
+            editable: false
+            category: "m"
+            source: [ifp]
+            type: "string"
+            nullable: true
+            length: 10
+
+        IdFormatDocument:
+            hidden: false
+            editable: false
+            category: "m"
+            source: [ifp]
+
+        IdAuteurDocument:
+            hidden: false
+            editable: false
+            category: "m"
+            source: [ifp]
+
+        IdSourceDocument:
+            hidden: false
+            editable: false
+            category: "m"
+            source: [ifp]
+            type: "choices"
+
+        IdNumVersionDocument:
+            hidden: false
+            editable: false
+            category: "m"
+            source: [ifp]
+
+        IdPoidsDocument:
+            hidden: false
+            editable: false
+            category: "m"
+            source: [ifp]
+
+        IdNbrPagesDocument:
+            hidden: false
+            editable: false
+            category: "m"
+            source: [ifp]
+
+        IdProfilArchivage:
+            hidden: false
+            editable: false
+            category: "m"
+            source: [ifp]
+
+        IdEtatArchive:
+            hidden: false
+            editable: false
+            category: "m"
+            source: [ifp]
+            type: "choices"
+
+        IdPeriodePaie:
+            hidden: false
+            editable: true
+            category: "m"
+            source: [ifp, iin]
+            type: "datemonth"
+
+        IdPeriodeExerciceSociale:
+            hidden: false
+            editable: true
+            category: "m"
+            source: [ifp]
+            type: "dateyear"
+
+        IdDateDernierAccesDocument:
+            hidden: false
+            editable: false
+            category: "m"
+            source: [ifp]
+            type: "datetime"
+
+        IdDateArchivageDocument:
+            hidden: false
+            editable: false
+            category: "m"
+            source: [ifp]
+            type: "datetime"
+
+        IdDureeArchivageDocument:
+            hidden: false
+            editable: false
+            category: "m"
+            source: [ifp]
+
+        IdDateFinArchivageDocument:
+            hidden: false
+            editable: false
+            category: "m"
+            source: [ifp]
+            type: "datetime"
+
+        IdNomSalarie:
+            hidden: false
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+            completudeWithoutDoc: true
+
+        IdPrenomSalarie:
+            hidden: false
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+            completudeWithoutDoc: true
+
+        IdNomJeuneFilleSalarie:
+            hidden: false
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+            completudeWithoutDoc: true
+
+        IdDateNaissanceSalarie:
+            hidden: false
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+            type: "dateday"
+
+        IdDateEntree:
+            hidden: false
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+            type: "dateday"
+
+        IdDateSortie:
+            hidden: false
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+            type: "dateday"
+            completudeWithoutDoc: true
+
+        IdNumNir:
+            hidden: false
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+
+        IdCodeCategProfessionnelle:
+            hidden: false
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+            type: "choices"
+
+        IdCodeCategSocioProf:
+            hidden: false
+            editable: false
+            category: "i"
+            source: [ifp]
+            type: "choices"
+
+        IdTypeContrat:
+            hidden: false
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+            type: "choices"
+
+        IdAffectation1:
+            hidden: false
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+            type: "choices"
+
+        IdAffectation2:
+            hidden: false
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+            type: "choices"
+
+        IdAffectation3:
+            hidden: false
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+            type: "choices"
+
+        IdLibre1:
+            hidden: false
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+
+        IdLibre2:
+            hidden: false
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+
+        IdAffectation1Date:
+            hidden: false
+            editable: false
+            category: "i"
+            source: [ifp]
+            type: "dateday"
+
+        IdAffectation2Date:
+            hidden: false
+            editable: false
+            category: "i"
+            source: [ifp]
+            type: "dateday"
+
+        IdAffectation3Date:
+            hidden: false
+            editable: false
+            category: "i"
+            source: [ifp]
+            type: "dateday"
+
+        IdLibre1Date:
+            hidden: false
+            editable: false
+            category: "i"
+            source: [ifp]
+            type: "datetime"
+
+        IdLibre2Date:
+            hidden: false
+            editable: false
+            category: "i"
+            source: [ifp]
+            type: "datetime"
+
+        NumMatricule:
+            hidden: false
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+
+        IdNumMatriculeRh:
+            hidden: false
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+            completudeWithoutDoc: true
+
+        IdNumMatriculeGroupe:
+            hidden: true
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+
+        IdAnnotation:
+            hidden: true
+            editable: false
+            category: "m"
+            source: [ifp]
+
+        IdConteneur:
+            hidden: false
+            editable: false
+            category: "m"
+            source: [ifp]
+
+        IdBoite:
+            hidden: false
+            editable: false
+            category: "m"
+            source: [ifp]
+
+        IdLot:
+            hidden: false
+            editable: false
+            category: "m"
+            source: [ifp]
+
+        IdNumOrdre:
+            hidden: false
+            editable: false
+            category: "m"
+            source: [ifp, iin]
+
+        ArchiveCfec:
+            hidden: true
+            editable: false
+            category: "t"
+            source: [ifp]
+
+        ArchiveSerialnumber:
+            hidden: true
+            editable: false
+            category: "t"
+            source: [ifp]
+
+        ArchiveDatetime:
+            hidden: true
+            editable: false
+            category: "t"
+            source: [ifp]
+            type: "datetime"
+
+        ArchiveName:
+            hidden: true
+            editable: false
+            category: "t"
+            source: [ifp]
+
+        ArchiveCfe:
+            hidden: true
+            editable: false
+            category: "t"
+            source: [ifp]
+
+        Numeropdf:
+            hidden: true
+            editable: false
+            category: "t"
+            source: [ifp]
+
+        OpnProvenance:
+            hidden: true
+            editable: false
+            category: "t"
+            source: [ifp]
+
+        StatusNum:
+            hidden: true
+            editable: false
+            category: "t"
+            source: [ifp]
+
+        IsDoublon:
+            hidden: true
+            editable: false
+            category: "t"
+            source: [ifp]
+
+        Login:
+            hidden: false
+            editable: false
+            category: "t"
+            source: [ifp]
+
+        Modedt:
+            hidden: false
+            editable: false
+            category: "m"
+            source: [ifp]
+
+        Numdtr:
+            hidden: false
+            editable: false
+            category: "m"
+            source: [ifp]
+
+        OldIdDateDernierAccesDocument:
+            hidden: true
+            editable: false
+            category: "m"
+            source: [ifp]
+            type: "datetime"
+
+        OldIdDateArchivageDocument:
+            hidden: true
+            editable: false
+            category: "m"
+            source: [ifp]
+            type: "datetime"
+
+        OldIdDateFinArchivageDocument:
+            hidden: true
+            editable: false
+            category: "m"
+            source: [ifp]
+            type: "datetime"
+
+        OldIdDateNaissanceSalarie:
+            hidden: true
+            editable: false
+            category: "i"
+            source: [ifp]
+            type: "dateday"
+
+        OldIdDateEntree:
+            hidden: true
+            editable: false
+            category: "i"
+            source: [ifp]
+            type: "dateday"
+
+        OldIdDateSortie:
+            hidden: true
+            editable: false
+            category: "i"
+            source: [ifp]
+            type: "dateday"
+
+        IdCodeActivite:
+            hidden: false
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+
+        CycleFinDeVie:
+            hidden: true
+            editable: false
+            category: "t"
+            source: [ifp]
+
+        CyclePurger:
+            hidden: true
+            editable: false
+            category: "t"
+            source: [ifp]
+
+        Geler:
+            hidden: false
+            editable: false
+            category: "t"
+            source: [ifp]
+
+        IdDate1:
+            hidden: true
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+            type: "datetime"
+
+        IdDate2:
+            hidden: true
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+            type: "datetime"
+
+        IdDate3:
+            hidden: true
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+            type: "datetime"
+
+        IdDate4:
+            hidden: true
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+            type: "datetime"
+
+        IdDate5:
+            hidden: true
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+            type: "datetime"
+
+        IdDate6:
+            hidden: true
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+            type: "datetime"
+
+        IdDate7:
+            hidden: true
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+            type: "datetime"
+
+        IdDate8:
+            hidden: true
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+            type: "datetime"
+
+        IdDateAdp1:
+            hidden: true
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+            type: "datetime"
+
+        IdDateAdp2:
+            hidden: true
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+            type: "datetime"
+
+        IdAlphanum1:
+            hidden: true
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+
+        IdAlphanum2:
+            hidden: true
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+
+        IdAlphanum3:
+            hidden: true
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+
+        IdAlphanum4:
+            hidden: true
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+
+        IdAlphanum5:
+            hidden: true
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+
+        IdAlphanum6:
+            hidden: true
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+
+        IdAlphanum7:
+            hidden: true
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+
+        IdAlphanum8:
+            hidden: true
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+
+        IdAlphanum9:
+            hidden: true
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+
+        IdAlphanum10:
+            hidden: true
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+
+        IdAlphanum11:
+            hidden: true
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+
+        IdAlphanum12:
+            hidden: true
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+
+        IdAlphanum13:
+            hidden: true
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+
+        IdAlphanum14:
+            hidden: true
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+
+        IdAlphanum15:
+            hidden: true
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+
+        IdAlphanum16:
+            hidden: true
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+
+        IdAlphanum17:
+            hidden: true
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+
+        IdAlphanum18:
+            hidden: true
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+
+        IdAlphanumAdp1:
+            hidden: true
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+
+        IdAlphanumAdp2:
+            hidden: true
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+
+        IdNum1:
+            hidden: true
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+
+        IdNum2:
+            hidden: true
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+
+        IdNum3:
+            hidden: true
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+
+        IdNum4:
+            hidden: true
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+
+        IdNum5:
+            hidden: true
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+
+        IdNum6:
+            hidden: true
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+
+        IdNum7:
+            hidden: true
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+
+        IdNum8:
+            hidden: true
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+
+        IdNum9:
+            hidden: true
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+
+        IdNum10:
+            hidden: true
+            editable: false
+            category: "i"
+            source: [ifp, iin]
+
+        CycleTempsParcouru:
+            hidden: false
+            editable: false
+            category: "m"
+            source: [ifp]
+
+        CycleTempsRestant:
+            hidden: false
+            editable: false
+            category: "m"
+            source: [ifp]
+
+        SetFinArchivage:
+            hidden: true
+            editable: false
+            category: "t"
+            source: [ifp]
+
+        IsPersonnel:
+            hidden: true
+            editable: false
+            category: "t"
+            source: [ifp]
+
+        CreatedAt:
+            hidden: true
+            editable: false
+            category: "t"
+            source: [ifp]
+            type: "datetime"
+
+        UpdatedAt:
+            hidden: true
+            editable: false
+            category: "t"
+            source: [ifp]
+            type: "datetime"
+
+    context_autocomplete:
+        # Liste des context autocomplete
+        default:
+            - NumMatricule
+            - IdNumMatriculeRh
+
+        matriculeRh:
+            - IdNumMatriculeRh
+            - IdNomSalarie
+            - IdPrenomSalarie
+            - IdNomJeuneFilleSalarie
+
+        societe:
+            - IdNomSociete
+            - IdCodeSociete
+
+        etablissement:
+            - IdLibEtablissement
+            - IdCodeEtablissement
+
+        date:
+            - IdDateDernierAccesDocument
+            - IdDateArchivageDocument
+            - IdDateNaissanceSalarie
+            - IdDateEntree
+            - IdDateSortie
+
+    # liste des dates converties en objet pour les WS
+    dates_objects:
+        - ifpArchiveDatetime
+        - ifpIdPeriodeExerciceSociale
+        - ifpIdPeriodePaie

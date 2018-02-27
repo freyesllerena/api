@@ -1,0 +1,14 @@
+services:
+
+    # Interupload Consultation du Ticket
+    interupload.ticket:
+        class:      InteruploadBundle\Service\InteruploadTicketService
+        arguments:  ['@service_container']
+    # Interupload Paramètres du Ticket
+    interupload.list_params:
+        class:      InteruploadBundle\Service\InteruploadParamsTicketService
+        arguments:  ['@service_container']
+    # Interupload Création et Modification du Ticket
+    interupload.build_ticket:
+        class:      InteruploadBundle\Service\InteruploadBuildTicketService
+        arguments:  ['@service_container']

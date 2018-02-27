@@ -1,0 +1,20 @@
+apiFallBack:
+    resource: "@ApiBundle/Controller"
+    type:     annotation
+    prefix: /api
+    condition: "request.attributes.get('version') === false"
+
+apiV1:
+    resource: "@ApiBundle/Controller/apiV1"
+    type:     annotation
+    prefix: /api
+    condition: "request.attributes.get('version') == '1.0'"
+
+NelmioApiDocBundle:
+    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
+    prefix:   /api/doc
+
+interupload:
+    resource: "@InteruploadBundle/Controller"
+    type:     annotation
+    prefix: /api/interupload

@@ -1,0 +1,40 @@
+imports:
+    - { resource: config.yml }
+    - { resource: parameters_test.yml }
+
+framework:
+    test: ~
+    session:
+        storage_id: session.storage.mock_file
+    profiler:
+        collect: false
+
+web_profiler:
+    toolbar: false
+    intercept_redirects: false
+
+swiftmailer:
+    disable_delivery: true
+
+monolog:
+    handlers:
+        main:
+            type:         fingers_crossed
+            action_level: WARNING
+            handler:      nested
+        nested:
+            type:     stream
+            path:     "%kernel.logs_dir%/%kernel.environment%.log"
+            level:    debug
+            channels: [!event]
+        console:
+            type:     console
+            bubble:   false
+            channels: [!event, !doctrine]
+
+liip_functional_test: ~
+
+# Interupload Configuration
+interupload:
+    url_wsdl: "%iup_url_wsdl%"
+    debug: true

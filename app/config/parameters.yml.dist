@@ -1,0 +1,45 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host:     192.168.186.197
+    database_port:     3306
+    database_name:     bvrh5_integration
+    database_user:     pac
+    database_password: pac
+    # You should uncomment this if you want use pdo_sqlite
+    # database_path: "%kernel.root_dir%/data.db3"
+
+    mailer_transport:  smtp
+    mailer_host:       192.168.10.2
+    mailer_user:       ~
+    mailer_password:   ~
+
+    # A secret key that's used to generate certain security-related tokens
+    secret:            ThisTokenIsReallySecretDoNotChangeIt
+
+    # Parametres des fichiers de configuration des clients
+    base_path: /data/sites/config_client
+    name_file: config.json
+
+    # Parametres du memcached
+    memcached_host: localhost
+    memcached_port: 11211
+
+    # URL d'accès au front (utilisée par le reverse proxy)
+    bvrh_front_url: front/
+
+    # Parametre Interupload : Url(WS) à envoyer en param à Interupload
+    # Exemple des params PUT attendus de la part d'Interupload :
+    # {
+    #  	"ticket": "99d4bc8f6a14cc32bce11ef02fda5caff6869f60f753b62f0cc728938ea285b5c6271e27",
+    #  	"statut": "OK_PRODUCTION",
+    #  	"pac": "TSI504"
+    #  }
+    iup_url_wsdl: 'https://192.168.186.24/interuploadProduction/interuploadWeb/?wsdl'
+    iup_url_ticket: 'http://bvrhrp.opl.local/api/interupload/ticket'
+    base_path_upload: /var/lib/jenkins/workspace/upload_temp
+
+    # Répertoire dans lequel sont déposés les export Excel
+    base_path_export: /var/lib/jenkins/workspace/export
+
+    # Paramètres IKP
+    ikp_server_url: 'https://websecurity.dns.op.com/julienl/interKeepass/webservice/interfaces/?wsdl'

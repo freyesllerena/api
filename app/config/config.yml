@@ -1,0 +1,148 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+    - { resource: services.yml }
+    - { resource: doctrine_extensions.yml }
+    - { resource: "@VisBundle/Resources/config/services.yml" }
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    locale: "fr_FR"
+
+framework:
+    #esi:             ~
+    translator:      { fallbacks: ["%locale%"] }
+    secret:          "%secret%"
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+        strict_requirements: ~
+    form:            ~
+    csrf_protection: ~
+    validation:      { enable_annotations: true }
+    serializer:      { enabled: true, enable_annotations: true }
+    templating:
+        engines: ['twig']
+        #assets_version: SomeVersionScheme
+    default_locale:  "%locale%"
+    trusted_hosts:   ~
+    trusted_proxies: ~
+    session:
+        # handler_id set to null will use default session handler from php.ini
+        handler_id:  "id"
+        gc_maxlifetime: 1800
+        cookie_secure: false
+        cookie_httponly: false
+    fragments:       ~
+    http_method_override: true
+
+# Twig Configuration
+twig:
+    debug:            "%kernel.debug%"
+    strict_variables: "%kernel.debug%"
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        driver:   pdo_mysql
+        host:     "%database_host%"
+        port:     "%database_port%"
+        dbname:   "%database_name%"
+        user:     "%database_user%"
+        password: "%database_password%"
+        charset:  UTF8
+        # if using pdo_sqlite as your database driver:
+        #   1. add the path in parameters.yml
+        #     e.g. database_path: "%kernel.root_dir%/data/data.db3"
+        #   2. Uncomment database_path in parameters.yml.dist
+        #   3. Uncomment next line:
+        #     path:     "%database_path%"
+
+    orm:
+        auto_generate_proxy_classes: "%kernel.debug%"
+        naming_strategy: doctrine.orm.naming_strategy.underscore
+        auto_mapping: true
+        mappings:
+            # Doctrine extensions
+            translatable:
+                type: annotation
+                alias: Gedmo
+                prefix: Gedmo\Translatable\Entity
+                dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Translatable/Entity/MappedSuperclass"
+        dql:
+            datetime_functions:
+                date: DoctrineExtensions\Query\Mysql\Date
+
+# Swiftmailer Configuration
+swiftmailer:
+    transport: "%mailer_transport%"
+    host:      "%mailer_host%"
+    username:  "%mailer_user%"
+    password:  "%mailer_password%"
+    spool:     { type: memory }
+
+#fos_user:
+#    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+#    firewall_name: main
+#    user_class: ApiBundle\Entity\User
+
+fos_rest:
+    param_fetcher_listener: true
+    body_listener: true
+    format_listener:
+        media_type:
+            version_regex: '/(v|version)=(?<version>[0-9\.]+)/'
+        rules:
+            - { path: '^/api', priorities: [ 'json' ], fallback_format: json, prefer_extension: false }
+            - { path: '^/', stop: true }
+    view:
+        view_response_listener: 'force'
+        mime_types:
+            json: ['application/json', 'application/json;version=1.0']
+
+nelmio_api_doc:
+    name: Documentation API BVRH 5.0
+    sandbox:
+        request_format:
+            method: accept_header
+
+# Ikp Configuration
+ikp:
+    url_wsdl: "%ikp_server_url%"
+    debug: true
+
+lsw_memcache:
+    session:
+        pool: default
+        prefix: "session_"
+    doctrine:
+        metadata_cache:
+            pool: default
+            entity_manager: default
+            document_manager: default
+            prefix: "metadata_"
+        result_cache:
+            pool: default
+            entity_manager: default
+            prefix: "result_"                # you may specify a prefix for the entries
+        query_cache:
+            pool: default
+            entity_manager: default
+            prefix: "query_"
+    pools:
+        default:
+            servers:
+                - { host: "%memcached_host%", tcp_port: "%memcached_port%" }
+
+# Interupload Configuration
+interupload:
+    encoding: UTF-8
+    cache_wsdl: WSDL_CACHE_BOTH
+    # Bundle et tables pour Interupload
+    bundle_name_entities: "ApiBundle"
+    table_ticket_name: "IupInterupload"
+    table_configuration_name: "IucInteruploadCfg"
+    url_wsdl: "%iup_url_wsdl%"
+    iup_url_ticket: "%iup_url_ticket%"
+    debug: false
+    base_path_upload: "%base_path_upload%"

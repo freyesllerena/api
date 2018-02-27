@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="bvrh5-archive" default="build">
+	<target name="build" depends="clean,archive"/>
+
+	<target name="clean">
+	    <delete dir="${basedir}/build-archive"/>
+	    <mkdir dir="${basedir}/build-archive"/>
+	</target>
+
+	<target name="archive">
+	    <condition property="version" value="${version}" else="5.0a.temp">
+	        <isset property="version"/>
+	    </condition>
+	    <condition property="commit" value="${commit}" else="HEAD">
+	        <and>
+	            <isset property="commit"/>
+	            <length string="${commit}" trim="yes" length="0" when="greater"/>
+	        </and>
+	    </condition>
+	    <exec dir="${basedir}" executable="git">
+	        <arg value="archive"/>
+	        <arg value="--format=tar.gz"/>
+	        <arg value="-o"/>
+	        <arg value="${basedir}/build-archive/bvrh5.api.${version}.tar.gz"/>
+	        <arg value="${commit}"/>
+	    </exec>
+	 </target>
+</project>

@@ -1,0 +1,186 @@
+services:
+    api.dynamic_connection:
+        class:      ApiBundle\Listener\DynamicDatabaseConnectionListener
+        arguments:  ['@service_container', '@doctrine.dbal.default_connection']
+        tags:
+          - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+
+    api.population_filter_request_listener:
+        class:      ApiBundle\Listener\PopulationFilterRequestListener
+        arguments:  ['@doctrine.orm.entity_manager', '@security.token_storage']
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest, priority: 1 }
+            - { name: kernel.event_listener, event: kernel.response, method: dropCreatedTables }
+
+    api.session_listener:
+        class:      ApiBundle\Listener\SessionListener
+        arguments: ['@service_container']
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest, priority: 7 }
+            - { name: kernel.event_listener, event: kernel.response, method: onKernelResponse }
+            - { name: kernel.event_listener, event: kernel.exception, method: onKernelException }
+            - { name: kernel.event_listener, event: kernel.request, method: refreshUserToken }
+            - { name: kernel.event_listener, event: kernel.request, method: keepSessionAlive }
+
+    api.repository.type:
+        class:      Doctrine\ORM\EntityRepository
+        factory:    ['@doctrine.orm.entity_manager', getRepository]
+        arguments:  ['ApiBundle\Entity\TypType']
+
+    api.manager.type:
+        class:      ApiBundle\Manager\TypeManager
+        arguments: ['@service_container']
+
+    api.repository.user:
+        class:      Doctrine\ORM\EntityRepository
+        factory:    ['@doctrine.orm.entity_manager', getRepository]
+        arguments:  ['ApiBundle\Entity\UsrUsers']
+
+    api.manager.user:
+        class:       ApiBundle\Manager\UserManager
+        arguments: ['@service_container']
+
+    api.repository.folder:
+        class:      Doctrine\ORM\EntityRepository
+        factory:    ['@doctrine.orm.entity_manager', getRepository]
+        arguments:  ['ApiBundle\Entity\FolFolder']
+
+    api.manager.folder:
+        class:      ApiBundle\Manager\FolderManager
+        arguments: ['@service_container']
+
+    api.generic_entity_listener:
+        class: ApiBundle\Listener\GenericEntityListener
+        arguments:  ['@service_container']
+        tags:
+            - { name: doctrine.event_listener, event: postLoad }
+
+    api.repository.profil_def_appli_repository:
+        class:      Doctrine\ORM\EntityRepository
+        factory:    ['@doctrine.orm.entity_manager', getRepository]
+        arguments:  ['ApiBundle\Entity\PdaProfilDefAppli']
+
+    api.manager.classification_plan:
+        class:      ApiBundle\Manager\ClassificationPlanManager
+        arguments: ['@service_container']
+
+    api.manager.population_filter:
+        class:      ApiBundle\Manager\PopulationFilterManager
+
+    api.repository.config:
+        class:      Doctrine\ORM\EntityRepository
+        factory:    ['@doctrine.orm.entity_manager', getRepository]
+        arguments:  ['ApiBundle\Entity\ConConfig']
+
+    api.manager.annotation:
+        class:      ApiBundle\Manager\AnnotationManager
+        arguments: ['@service_container']
+
+    api.form.ano_annotations:
+        class:      ApiBundle\Form\AnoAnnotationsType
+        arguments:  ["@doctrine.orm.entity_manager"]
+        tags:
+            - { name: form.type }
+
+    api.form.ado_annotations_dossier:
+        class:      ApiBundle\Form\AdoAnnotationsDossierType
+        arguments:  ["@doctrine.orm.entity_manager"]
+        tags:
+            - { name: form.type }
+
+    api.form.pdh_profil_def_habi:
+        class:      ApiBundle\Form\PdhProfilDefHabiType
+        arguments: ['@service_container']
+        tags:
+            - { name: form.type }
+
+    api.repository.completude:
+        class:      Doctrine\ORM\EntityRepository
+        factory:    ['@doctrine.orm.entity_manager', getRepository]
+        arguments:  ['ApiBundle\Entity\ComCompletude']
+
+    api.manager.completude:
+        class:      ApiBundle\Manager\CompletudeManager
+        arguments: ['@service_container']
+
+    api.validator.check_type_codes_list:
+        class: ApiBundle\Validator\Constraints\CheckTypeCodesListValidator
+        arguments:  ['@api.manager.type']
+        tags:
+            - { name: validator.constraint_validator, alias: validator_type_codes_list }
+
+    api.validator.check_emails_list:
+        class: ApiBundle\Validator\Constraints\CheckEmailsListValidator
+        arguments:  ['@service_container']
+        tags:
+            - { name: validator.constraint_validator, alias: validator_emails_list }
+
+    api.manager.document:
+        class: ApiBundle\Manager\DocumentManager
+        arguments: ['@service_container']
+
+    api.manager.config:
+        class: ApiBundle\Manager\ConfigManager
+        arguments: ['@service_container']
+
+    api.repository.dictionnaire:
+        class:      Doctrine\ORM\EntityRepository
+        factory:    ['@doctrine.orm.entity_manager', getRepository]
+        arguments:  ['ApiBundle\Entity\DicDictionnaire']
+
+    api.manager.dictionnaire:
+        class:      ApiBundle\Manager\DictionaryManager
+        arguments: ['@service_container']
+
+    api.manager.metadata:
+        class: ApiBundle\Manager\MetadataManager
+        arguments:  ['@service_container']
+
+    api.manager.autocomplete:
+        class: ApiBundle\Manager\AutocompleteManager
+        arguments:  ['@service_container']
+
+    api.manager.user_context:
+        class: ApiBundle\Manager\UserContextManager
+        arguments: ['@service_container']
+
+    api.manager.security:
+        class: ApiBundle\Manager\SecurityManager
+        arguments:  ['@service_container']
+
+    api.manager.session:
+        class: ApiBundle\Manager\SessionManager
+        arguments:  ['@service_container']
+
+    api.manager.interkeepass:
+        class: ApiBundle\Manager\InterkeepassManager
+        arguments:  ['@service_container']
+
+    api.repository.referential:
+        class:      Doctrine\ORM\EntityRepository
+        factory:    ['@doctrine.orm.entity_manager', getRepository]
+        arguments:  ['ApiBundle\Entity\RidRefId']
+
+    api.manager.referential:
+        class:      ApiBundle\Manager\ReferentialManager
+        arguments: ['@service_container']
+
+    api.manager.process:
+        class:      ApiBundle\Manager\ProcessManager
+        arguments:  ['@service_container']
+
+    api.manager.interupload:
+        class:      ApiBundle\Manager\InteruploadManager
+        arguments:  ['@service_container']
+
+    api.manager.habilitation:
+        class:      ApiBundle\Manager\HabilitationManager
+        arguments:  ['@service_container']
+
+    api.manager.export_excel:
+        class:      ApiBundle\Manager\ExportExcelManager
+        arguments:  ['@service_container']
+
+    api.manager.report:
+        class:      ApiBundle\Manager\ReportManager
+        arguments:  ['@service_container']

@@ -1,0 +1,40 @@
+# This file is a "template" of what your parameters.yml file should look like
+# Set parameters here that may be different on each deployment target of the app, e.g. development, staging, production.
+# http://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
+parameters:
+    database_host:     [IP_DU_SERVEUR_DE_DONNEES]
+    database_port:     [PORT_DU_SERVEUR_DE_DONNEES]
+    database_name:     [NOM_DE_LA_BASE_DE_DONNEES]
+    database_user:     [LOGIN_DE_LA_BASE_DE_DONNEES]
+    database_password: [MDP_DE_LA_BASE_DE_DONNEES]
+
+    # Parametres des fichiers de configuration des clients
+    base_path_config:  [BASE_CHEMIN_D_ACCES]
+    name_file:  [NOM_FICHIER_CONFIG_JSON]
+
+    # Parametres du memcached
+    memcached_host:     [IP_DU_SERVEUR_MEMCACHED]
+    memcached_port:     [PORT_DU_SERVEUR_MEMCACHED]
+
+    # A secret key that's used to generate certain security-related tokens
+    secret:            ThisTokenIsNotSoSecretChangeIt
+
+    # URL d'accès au front (utilisée par le reverse proxy)
+    bvrh_front_url: front/
+
+    # Parametre Interupload : Url(WS) à envoyer en param à Interupload
+    # Exemple des params PUT attendus de la part d'Interupload :
+    # {
+    #  	"ticket": "99d4bc8f6a14cc32bce11ef02fda5caff6869f60f753b62f0cc728938ea285b5c6271e27",
+    #  	"statut": "OK_PRODUCTION",
+    #  	"pac": "TSI504"
+    #  }
+    iup_url_wsdl: 'https://192.168.186.24/interuploadProduction/interuploadWeb/?wsdl'
+    iup_url_ticket: 'http://bvrhrp.opl.local/api/interupload/ticket'
+    base_path_upload: /data/sites/upload_temp
+
+    # Répertoire dans lequel sont déposés les export Excel
+    base_path_export: /data/sites/export
+
+    # Paramètres IKP
+    ikp_server_url: 'https://websecurity.dns.op.com/julienl/interKeepass/webservice/interfaces/?wsdl'

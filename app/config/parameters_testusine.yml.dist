@@ -1,0 +1,45 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host:     null
+    database_port:     null
+    database_name:     null
+    database_user:     null
+    database_password: null
+    # You should uncomment this if you want use pdo_sqlite
+    # database_path: "%kernel.root_dir%/data.db3"
+
+    mailer_transport:  smtp
+    mailer_host:       192.168.10.2
+    mailer_user:       ~
+    mailer_password:   ~
+
+    # A secret key that's used to generate certain security-related tokens
+    secret:            ThisTokenIsReallySecretDoNotChangeIt
+
+    # Parametres des fichiers de configuration des clients
+    base_path_config: /DATA/sites/config_client
+    name_file: config.json
+
+    # Parametres du memcached
+    memcached_host: 192.168.188.23
+    memcached_port: 11211
+
+    # URL d'accès au front (utilisée par le reverse proxy)
+    bvrh_front_url: front/
+
+    # Parametre Interupload : Url(WS) à envoyer en param à Interupload
+    # Exemple des params PUT attendus de la part d'Interupload :
+    # {
+    #  	"ticket": "99d4bc8f6a14cc32bce11ef02fda5caff6869f60f753b62f0cc728938ea285b5c6271e27",
+    #  	"statut": "OK_PRODUCTION",
+    #  	"pac": "TSI504"
+    #  }
+    iup_url_wsdl: 'http://192.168.188.6/interupload/interuploadProduction/interuploadWeb/?wsdl'
+    iup_url_ticket: 'http://bvrhrp-testusine.opl.local/api/interupload/ticket'
+    base_path_upload: /DATA/sites/upload_temp
+
+    # Répertoire dans lequel sont déposés les export Excel
+    base_path_export: /DATA/sites/export
+
+    # Paramètres IKP
+    ikp_server_url: 'https://192.168.188.6:8443/interKeepass/?wsdl'

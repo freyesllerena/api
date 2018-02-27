@@ -1,0 +1,3 @@
+vis_homepage:
+    path:     /
+    defaults: { _controller: VisBundle:Default:index }
